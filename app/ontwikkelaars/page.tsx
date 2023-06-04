@@ -8,7 +8,7 @@ export default function Page() {
         <div className='min-h-screen flex flex-col'>
             <Header />
 
-            <main className="my-auto flex flex-col gap-8 mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+            <main className="flex flex-col gap-8 mx-auto max-w-7xl my-40 px-6 pb-8 pt-24 lg:px-8">
                 <div className="my-auto text-center">
                     <p className="text-base font-semibold text-blue-600">404</p>
                     <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">(<span className="text-blue-600">nog</span>) Niet beschikbaar</h1>
