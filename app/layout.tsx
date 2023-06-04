@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
 
 export const metadata = {
-    title: 'Nu Deventer',
-    description: 'Alles omtrent Deventer op één locatie.',
+    title: 'nuDeventer.nl - Alles met betrekking tot Deventer op één plek.',
+    description: 'Alles met betrekking tot Deventer op één plek.',
     icons: {
         icon: '/favicon.ico'
     }

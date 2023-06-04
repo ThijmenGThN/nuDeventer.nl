@@ -49,6 +49,9 @@
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "vidstack/globals"
     ]
   },
   "include": [
