@@ -1,12 +1,9 @@
 import '@/styles/globals.css'
 
 export const metadata = {
-    title: 'nuDeventer.nl - Alles met betrekking tot Deventer op één plek.',
+    title: 'nuDeventer.nl',
     description: 'Alles met betrekking tot Deventer op één plek.',
-    icons: {
-        icon: '/favicon.ico'
-    }
-
+    icons: { icon: '/favicon.ico' }
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {

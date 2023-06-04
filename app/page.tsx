@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 
-import Stream from '@/components/Stream'
-import Weather from '@/components/Weather'
+import Stream from '@/components/widgets/Stream'
+import Weather from '@/components/widgets/Weather'
 
 import Footer from '@/components/Footer'
 
