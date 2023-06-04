@@ -15,11 +15,12 @@ export default function Component() {
         <span className='text-xl font-semibold'>Webcamera</span>
       </div>
 
-      <div className='relative bg-black aspect-video overflow-hidden rounded-xl'>
+      <div className='relative bg-black aspect-video overflow-hidden rounded-lg'>
         <MediaPlayer className='w-full h-full'
           poster="stream/poster.webp"
           src={feed}
           autoplay
+          playsinline
           muted
         >
           <MediaOutlet />
