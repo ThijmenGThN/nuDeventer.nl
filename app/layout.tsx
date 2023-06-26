@@ -1,14 +1,17 @@
+import { Inter } from 'next/font/google'
+
 import '@/styles/globals.css'
 
 export const metadata = {
-    title: 'nuDeventer.nl',
-    description: 'Alles met betrekking tot Deventer op één plek.',
-    icons: { icon: '/favicon.ico' }
+  title: 'nuDeventer.nl',
+  description: 'Alles met betrekking tot Deventer op één plek.',
+  icons: { icon: '/favicon.ico' }
 }
 
+const Font = Inter({ subsets: ['latin'] })
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <html className='min-h-screen'>
+        <html className={Font.className + ' min-h-screen'}>
             <body className='min-h-screen'>
                 <svg
                     className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"

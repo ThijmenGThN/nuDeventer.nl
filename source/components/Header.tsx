@@ -21,7 +21,7 @@ export default function Component() {
                     <span className="sr-only">Nu Deventer</span>
                     <Link href="/" className="-m-1.5 p-1.5">
                         <p className="text-xl font-semibold">
-                            <span className="text-blue-600">nu</span>
+                            <span className="text-theme-primary">nu</span>
                             Deventer
                             <span className="text-base">.nl</span>
                         </p>
@@ -54,7 +54,7 @@ export default function Component() {
                             <div className="flex lg:flex-1">
                                 <Link href="/" className="-m-1.5 p-1.5">
                                     <p className="text-xl font-semibold">
-                                        <span className="text-blue-600">nu</span>
+                                        <span className="text-theme-primary">nu</span>
                                         Deventer
                                         <span className="text-base">.nl</span>
                                     </p>

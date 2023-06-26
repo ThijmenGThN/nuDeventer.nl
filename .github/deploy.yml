@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: main # <- Rename to a valid branch.
+    branches: leaflet # <- Rename to a valid branch.
 
 jobs:
   deploy:
@@ -24,10 +24,10 @@ jobs:
             mkdir ~/env ~/env/${{github.event.repository.name}}
             cd ~/env/${{github.event.repository.name}}
 
-            git clone https://github.com/${{github.event.repository.name}} .
-            git pull
+            sudo git clone https://github.com/${{github.event.repository.name}} .
+            sudo git pull
 
             echo '${{ secrets.DEPLOY_ENV }}' > .env
             
-            docker-compose down
-            docker-compose up -d
+            sudo docker-compose down
+            sudo docker-compose up -d

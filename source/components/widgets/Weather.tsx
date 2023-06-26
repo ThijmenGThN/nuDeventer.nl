@@ -4,7 +4,7 @@ export default function Component() {
     return (
         <div className='flex flex-col gap-4'>
             <div className='flex items-center gap-4'>
-                <span className="inline-flex uppercase items-center rounded-md bg-blue-100 px-3 py-1 font-medium text-blue-600">
+                <span className="inline-flex uppercase items-center rounded-md bg-blue-100 px-3 py-1 font-medium text-theme-primary">
                     +3 uur
                 </span>
                 <span className='text-xl font-semibold'>Neerslag</span>

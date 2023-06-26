@@ -24,7 +24,7 @@ export default function Component() {
                     <div>
                         <Link href="/" className="-m-1.5 p-1.5">
                             <p className="text-xl font-semibold">
-                                <span className="text-blue-600">nu</span>
+                                <span className="text-theme-primary">nu</span>
                                 Deventer
                                 <span className="text-base">.nl</span>
                             </p>

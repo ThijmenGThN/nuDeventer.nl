@@ -1,10 +1,10 @@
 "use client"
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import { MediaOutlet, MediaPlayer } from '@vidstack/react'
+import Image from 'next/image'
 
-import aMapGear from '@/assets/mapgears.webp'
+import aMapGear from '@/assets/icons/mapgears.webp'
 import Link from 'next/link'
 
 const feed = 'https://streaming02-mapgear.heuve.link/deventer_rvdr/_definst_/camera1.stream/playlist.m3u8'
@@ -16,15 +16,15 @@ export default function Component() {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex items-center gap-4'>
-        <span className="inline-flex uppercase items-center rounded-md bg-blue-100 px-3 py-1 font-medium text-blue-600">
+        <span className="inline-flex uppercase items-center rounded-md bg-blue-100 px-3 py-1 font-medium text-theme-primary">
           live
         </span>
         <span className='text-xl font-semibold'>Webcamera</span>
       </div>
 
       <div className='mb-[1.125rem]'>
-        <div className='-z-10 relative bg-blue-600 aspect-video overflow-hidden rounded-lg'>
-          <MediaPlayer ref={player} className='w-full h-full'
+        <div className='-z-10 relative bg-theme-primary aspect-video overflow-hidden rounded-lg'>
+          <MediaPlayer liveEdgeTolerance={5} streamType="live" ref={player} className='w-full h-full'
             onPlay={() => loader.current?.classList.add('hidden')}
             playsinline
             src={feed}
