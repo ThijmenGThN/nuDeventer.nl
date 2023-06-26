@@ -14,13 +14,13 @@ export async function POST(req: Request) {
         const decoded = Buffer.from(encoded, 'base64').toString()
         const [email, password] = decoded.split(':')
 
-        if (!email || email == '') throw { xerr: 'An email address must be provided.', status: 400 }
-        if (!password || password == '') throw { xerr: 'A password must be provided.', status: 400 }
+        if (!email || email == '') throw { xerr: 'Het invullen van een e-mailadres is verplicht.', status: 400 }
+        if (!password || password == '') throw { xerr: 'Het invullen van een wachtwoord is verplicht.', status: 400 }
 
         const user = await prisma.user.findFirst({ where: { email } })
-        if (!user) throw { xerr: 'A user with this email address does not exist.', status: 404 }
+        if (!user) throw { xerr: 'Een ontwikkelaar met dit e-mailadres bestaat niet.', status: 404 }
 
-        if (!bcrypt.compareSync(password, user.password)) throw { xerr: 'The provided credentials are invalid.', status: 403 }
+        if (!bcrypt.compareSync(password, user.password)) throw { xerr: 'De ingevoerde gegevens zijn niet correct.', status: 403 }
 
         const response = NextResponse.json(
             {
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
         return NextResponse.json(
             error.xerr
                 ? error.xerr
-                : 'Something went wrong, try again later.',
+                : 'Er is iets mis gegaan, probeer het later nog eens.',
             { status: error.status ?? 500 }
         )
     }

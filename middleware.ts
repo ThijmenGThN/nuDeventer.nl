@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
 
         if (match('/login') || match('/register')) response.cookies.delete('sessionToken')
 
-        if (match('/dash')) {
+        if (match('/ontwikkelaars')) {
             const { value: sessionToken } = req.cookies.get('sessionToken') ?? { value: '' }
 
             if (!await verifySession(sessionToken)) throw 'Session has expired, authentication required.'

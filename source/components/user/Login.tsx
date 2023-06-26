@@ -19,7 +19,7 @@ export default function Component() {
 
         try {
             await user.login({ email, password })
-            router.push('/dash')
+            router.push('/ontwikkelaars')
         }
 
         catch (error) { setErrorMessage('' + error) }

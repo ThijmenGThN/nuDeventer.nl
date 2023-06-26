@@ -22,7 +22,7 @@ export default function Component() {
 
         try {
             await user.register({ email, password, first_name, last_name })
-            router.push('/dash')
+            router.push('/ontwikkelaars')
         }
 
         catch (error) { setErrorMessage('' + error) }

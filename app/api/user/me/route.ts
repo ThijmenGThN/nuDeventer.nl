@@ -12,10 +12,10 @@ export async function GET(req: Request) {
 
         const payload: any = jwt.decode(sessionToken)
 
-        if (!payload?.email) throw { xerr: 'Session has expired, authentication required.', status: 401 }
+        if (!payload?.email) throw { xerr: 'Sessie is verlopen, log opnieuw in.', status: 401 }
 
         const user = await prisma.user.findFirst({ where: { email: payload.email } })
-        if (!user) throw { xerr: 'A user with this email address does not exist.', status: 404 }
+        if (!user) throw { xerr: 'Een ontwikkelaar met dit e-mailadres bestaat niet.', status: 404 }
 
         return NextResponse.json(
             {
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
         return NextResponse.json(
             error.xerr
                 ? error.xerr
-                : 'Something went wrong, try again later.',
+                : 'Er is iets mis gegaan, probeer het later nog eens.',
             { status: error.status ?? 500 }
         )
     }

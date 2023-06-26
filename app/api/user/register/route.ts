@@ -14,10 +14,10 @@ export async function POST(req: Request) {
         const decoded = Buffer.from(encoded, 'base64').toString()
         const [email, password] = decoded.split(':')
 
-        if (!email || email == '') throw { xerr: 'An email address must be provided.', status: 400 }
-        if (!password || password == '') throw { xerr: 'A password must be provided.', status: 400 }
+        if (!email || email == '') throw { xerr: 'Het invullen van een e-mailadres is verplicht.', status: 400 }
+        if (!password || password == '') throw { xerr: 'Het invullen van een wachtwoord is verplicht.', status: 400 }
 
-        if (await prisma.user.findFirst({ where: { email } })) throw { xerr: 'A user with this email address already exists.', status: 403 }
+        if (await prisma.user.findFirst({ where: { email } })) throw { xerr: 'Een ontwikkelaar bestaat al met dit e-mailadres.', status: 403 }
 
         const { first_name, last_name } = await req.json()
 
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         return NextResponse.json(
             error.xerr
                 ? error.xerr
-                : 'Something went wrong, try again later.',
+                : 'Er is iets mis gegaan, probeer het later nog eens.',
             { status: error.status ?? 500 }
         )
     }
