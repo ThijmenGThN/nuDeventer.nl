@@ -28,14 +28,14 @@ import {
 } from '@heroicons/react/24/outline'
 
 const navigation = [
-    { name: "Dashboard", href: '/dashboard', icon: Squares2X2Icon },
-    { name: "Via Client", href: '/dashboard/client', icon: ComputerDesktopIcon },
-    { name: "On Server", href: '/dashboard/server', icon: ServerStackIcon },
-    { name: "My Role", href: '/dashboard/role', icon: ShieldCheckIcon },
-    { name: "API Tokens", href: '/dashboard/token', icon: KeyIcon }
+    { name: "Ontwikkelaars", href: '/ontwikkelaars', icon: Squares2X2Icon },
+    { name: "Via Client", href: '/ontwikkelaars/client', icon: ComputerDesktopIcon },
+    { name: "On Server", href: '/ontwikkelaars/server', icon: ServerStackIcon },
+    { name: "My Role", href: '/ontwikkelaars/role', icon: ShieldCheckIcon },
+    { name: "API Tokens", href: '/ontwikkelaars/token', icon: KeyIcon }
 ]
 
-const homePath = "/dashboard"
+const homePath = "/ontwikkelaars"
 
 export default function Component({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
@@ -218,7 +218,7 @@ export default function Component({ children }: { children: React.ReactNode }) {
                             <Dropdown
                                 className="flex items-center"
                                 navigation={[
-                                    { name: 'Account', href: '/dashboard/account' }
+                                    { name: 'Account', href: '/ontwikkelaars/account' }
                                 ]}
                             >
                                 {

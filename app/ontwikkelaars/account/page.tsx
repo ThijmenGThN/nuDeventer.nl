@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline"
 
-import * as actions from '@/server/dashboard/account'
+import * as actions from '@/server/ontwikkelaars/account'
 
 import Loading from '@/components/interface/Loading'
 

@@ -11,7 +11,7 @@ export default function Page() {
 
                 <li className="px-6 py-4">
                     <p className="font-semibold">Examples on how to build certain pages</p>
-                    <p className="m-2">app/dashboard/**/*</p>
+                    <p className="m-2">app/ontwikkelaars/**/*</p>
                 </li>
             </ul>
         </div>

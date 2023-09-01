@@ -25,6 +25,7 @@
     "@types/nodemailer": "^6.4.8",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "@vidstack/react": "^0.6.13",
     "autoprefixer": "10.4.14",
     "bcrypt": "^5.1.0",
     "crypto-js": "^4.1.1",
@@ -49,5 +50,8 @@
   "prisma": {
     "schema": "src/prisma/schema.prisma",
     "seed": "ts-node src/prisma/seed.ts"
+  },
+  "devDependencies": {
+    "vidstack": "^0.6.13"
   }
 }

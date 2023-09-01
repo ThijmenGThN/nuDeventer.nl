@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react"
 import { signIn, getProviders } from "next-auth/react"
 
-const callbackUrl = '/dashboard'
+const callbackUrl = '/ontwikkelaars'
 
 export default function Component() {
     const [providers, setProviders] = useState<Array<any>>([])
 
-    useEffect(() => {  getProviders().then(({ credentials, ...OAuth }: any) => setProviders(Object.values(OAuth))) }, [])
+    useEffect(() => { getProviders().then(({ credentials, ...OAuth }: any) => setProviders(Object.values(OAuth))) }, [])
 
     return providers.length > 0 && (
         <>

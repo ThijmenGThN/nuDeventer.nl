@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useState, useTransition } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import * as actions from "@/server/dashboard/apiTokens"
+import * as actions from "@/server/ontwikkelaars/apiTokens"
 
 import { DocumentDuplicateIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline"
 
@@ -60,7 +60,7 @@ export default function Page() {
 
                                 <div className="mt-6 flex items-center justify-end gap-x-6">
                                     <Link className="flex gap-x-2 items-center justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                                        href="/dashboard/token"
+                                        href="/ontwikkelaars/token"
                                         prefetch={false}
                                     >
                                         Return to overview
@@ -71,7 +71,7 @@ export default function Page() {
                         : <Form
                             onSubmit={onSubmit}
                             submit={{ label: 'Generate token', position: 'right' }}
-                            cancel={{ label: 'Cancel', redirect: '/dashboard/token' }}
+                            cancel={{ label: 'Cancel', redirect: '/ontwikkelaars/token' }}
                             description='Once a new token has been generated, you will be able to view it in the overview. If needed, you can easily revoke the token at any time'
                             validator={validate.objects.name}
                             fields={[

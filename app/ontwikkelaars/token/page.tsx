@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth"
 import options from "@/auth/options"
 import prisma from "@/prisma/client"
 
-import DeleteToken from "@/components/dashboard/DeleteToken"
+import DeleteToken from "@/components/ontwikkelaars/DeleteToken"
 
 import type { ApiToken } from "@prisma/client"
 
@@ -25,7 +25,7 @@ export default async function Page() {
                 </div>
 
                 <Link className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    href="/dashboard/token/new"
+                    href="/ontwikkelaars/token/new"
                 >
                     Generate new token
                 </Link>

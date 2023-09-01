@@ -9,7 +9,7 @@ import * as actions from "@/server/auth/register"
 
 import Form from '@/components/Form'
 
-const callbackUrl = '/dashboard'
+const callbackUrl = '/ontwikkelaars'
 
 export default function Component({ email }: { email: string }) {
     const [isPending, startTransition] = useTransition()

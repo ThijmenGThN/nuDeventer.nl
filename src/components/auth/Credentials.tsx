@@ -9,7 +9,7 @@ import validate from '@/helpers/validation'
 
 import Form from '@/components/Form'
 
-const callbackUrl = '/dashboard'
+const callbackUrl = '/ontwikkelaars'
 
 export default function Component() {
     const router = useRouter()

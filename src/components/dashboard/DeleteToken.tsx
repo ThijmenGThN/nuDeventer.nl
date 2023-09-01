@@ -4,7 +4,7 @@ import { useTransition } from "react"
 import { useRouter } from 'next/navigation'
 import { TrashIcon } from "@heroicons/react/24/outline"
 
-import * as actions from '@/server/dashboard/apiTokens'
+import * as actions from '@/server/ontwikkelaars/apiTokens'
 
 export default function Component({ id }: { id: string }) {
     const router = useRouter()
