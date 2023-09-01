@@ -1,9 +1,9 @@
 version: "3"
 services:
 
-  # ┏━ NextJS | Frontend, react based compiled webapp.
+  # ┏━ NextJS | A framework for the web.
   app:
-    image: node:lts-alpine
+    image: node:18-alpine
     restart: unless-stopped
     command: ["yarn", "deploy"]
     ports: [$APP_PORT:3000]
@@ -13,11 +13,11 @@ services:
     profiles: ["prod"]
     env_file: .env
 
-  # ┏━ Postgres | Database, SQL based data storage.
+  # ┏━ MySQL | An SQL based database.
   database:
-    image: postgis/postgis:latest
+    image: postgres:15
     restart: unless-stopped
     ports: [$DATABASE_PORT:5432]
     volumes: [./data:/var/lib/postgresql/data]
-    environment: 
+    environment:
       POSTGRES_PASSWORD: $DATABASE_PASS

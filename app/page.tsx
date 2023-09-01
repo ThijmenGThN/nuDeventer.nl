@@ -1,9 +1,8 @@
-import Header from '@/components/Header'
+import Header from '@/components/interface/Header'
 
 import Stream from '@/components/widgets/Stream'
-import Weather from '@/components/widgets/Weather'
 
-import Footer from '@/components/Footer'
+import Footer from '@/components/interface/Footer'
 
 export default function Page() {
     return (
@@ -12,8 +11,6 @@ export default function Page() {
 
             <main className="flex flex-col gap-8 mx-auto max-w-7xl px-6 pb-8 pt-24 lg:px-8">
                 <Stream />
-
-                <Weather />
             </main>
 
             <Footer />

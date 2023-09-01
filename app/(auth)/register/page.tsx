@@ -1,65 +1,99 @@
-import Link from "next/link"
+"use client"
+
+import Link from 'next/link'
 import Image from 'next/image'
+import { useState, useTransition } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-import Register from "@/components/user/Register"
+import gravatar from '@/helpers/gravatar'
+import * as actions from "@/server/auth/register"
 
-import aLogo from '@/assets/branding/logo.webp'
-import aSplash from "@/assets/pages/auth/splash.webp"
+import OAuth from '@/components/auth/OAuth'
+
+import aLogo from '@/assets/logo.webp'
+
+import validate from '@/helpers/validation'
+import Form from '@/components/Form'
 
 export default function Page() {
+    const params = useSearchParams()
+    const [isPending, startTransition] = useTransition()
+
+    const [formEmail, setFormEmail] = useState<string>()
+    const [hasBeenSent, setHasBeenSent] = useState<boolean>(false)
+
+    const onSubmit = ({ email }: any) => new Promise<void>(async (resolve, throwError) => {
+        startTransition(async () => {
+            if (!email) return
+
+            try { await actions.request(email) }
+            catch (_) { return throwError('This email address is already taken') }
+
+            setFormEmail(email)
+            setHasBeenSent(true)
+        })
+    })
+
     return (
-        <Container>
-            <FormHead />
+        <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+            <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                <Link href="/">
+                    <Image
+                        className="mx-auto h-10 w-auto"
+                        src={aLogo}
+                        alt=""
+                    />
+                </Link>
+                <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    Sign up for an account
+                </h2>
+            </div>
 
-            <div className="mt-10">
-                <Register />
+            <div className="relative my-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+                <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+                    {
+                        hasBeenSent
+                            ? (
+                                <div className="flex flex-col items-center justify-center gap-y-4">
+                                    <Image
+                                        className="h-16 w-16 rounded-full bg-gray-50 border"
+                                        src={gravatar(formEmail ?? '')}
+                                        width={80}
+                                        height={80}
+                                        alt=""
+                                    />
+                                    <p className="truncate text-sm font-medium text-gray-900">
+                                        {formEmail}
+                                    </p>
 
-                <div className='mt-5 flex justify-between'>
-                    <Link href="/" className="text-sm font-semibold leading-7 text-theme-primary hover:text-theme-primary-dark">
-                        <span aria-hidden="true">&larr;</span> Terug
-                    </Link>
+                                    <p className="truncate text-sm mt-4 text-center font-medium text-gray-900">
+                                        We have sent you an email to create an account
+                                    </p>
+                                </div>
+                            )
+                            : (
+                                <>
+                                    <Form
+                                        onSubmit={onSubmit}
+                                        validator={validate.objects.email}
+                                        submit={{ label: 'Continue', position: 'full' }}
+                                        fields={[
+                                            { id: 'email', type: 'email', label: 'Email address' }
+                                        ]}
+                                    />
 
-                    <Link href="/login" className="text-sm font-semibold leading-7 text-theme-primary hover:text-theme-primary-dark">
-                        Inloggen
+                                    <OAuth />
+                                </>
+                            )
+                    }
+                </div>
+
+                <div className="absolute -bottom-10 left-5 text-center text-sm text-gray-500">
+                    <Link href="/login">
+                        ← Already have an account?
                     </Link>
                 </div>
             </div>
-        </Container>
-    )
-}
-
-function Container({ children }: { children: React.ReactNode }) {
-    return <div className="flex min-h-screen flex-1">
-        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-            <div className="mx-auto w-full max-w-sm lg:w-96">
-                {children}
-            </div>
-        </div>
-        <div className="relative hidden w-0 flex-1 lg:block">
-            <Image
-                priority
-                className="absolute inset-0 h-full w-full object-cover"
-                src={aSplash}
-                alt=""
-            />
-        </div>
-    </div>
-}
-
-function FormHead() {
-    return (
-        <div>
-            <Link href='/'>
-                <Image
-                    priority
-                    className="h-10 w-auto"
-                    src={aLogo}
-                    alt="Logo"
-                />
-            </Link>
-            <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Ontwikkelaars account aanmaken
-            </h2>
         </div>
     )
 }

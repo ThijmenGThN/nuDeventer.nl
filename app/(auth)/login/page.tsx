@@ -1,65 +1,41 @@
-import Link from "next/link"
+import Link from 'next/link'
 import Image from 'next/image'
 
-import Login from "@/components/user/Login"
+import OAuth from '@/components/auth/OAuth'
+import Credentials from '@/components/auth/Credentials'
 
-import aLogo from '@/assets/branding/logo.webp'
-import aSplash from "@/assets/pages/auth/splash.webp"
+import aLogo from '@/assets/logo.webp'
 
 export default function Page() {
+
     return (
-        <Container>
-            <FormHead />
+        <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+            <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                <Link href="/">
+                    <Image
+                        className="mx-auto h-10 w-auto"
+                        src={aLogo}
+                        alt=""
+                    />
+                </Link>
+                <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    Sign in to your account
+                </h2>
+            </div>
 
-            <div className="mt-10">
-                <Login />
+            <div className="relative my-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+                <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+                    <Credentials />
 
-                <div className='mt-5 flex justify-between'>
-                    <Link href="/" className="text-sm font-semibold leading-7 text-theme-primary hover:text-theme-primary-dark">
-                        <span aria-hidden="true">&larr;</span> Terug
-                    </Link>
+                    <OAuth />
+                </div>
 
-                    <Link href="/register" className="text-sm font-semibold leading-7 text-theme-primary hover:text-theme-primary-dark">
-                        Registreren
+                <div className="absolute -bottom-10 left-5 text-center text-sm text-gray-500">
+                    <Link href="/">
+                        ← Back to homepage
                     </Link>
                 </div>
             </div>
-        </Container>
-    )
-}
-
-function Container({ children }: { children: React.ReactNode }) {
-    return <div className="flex min-h-screen flex-1">
-        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-            <div className="mx-auto w-full max-w-sm lg:w-96">
-                {children}
-            </div>
-        </div>
-        <div className="relative hidden w-0 flex-1 lg:block">
-            <Image
-                priority
-                className="absolute inset-0 h-full w-full object-cover"
-                src={aSplash}
-                alt=""
-            />
-        </div>
-    </div>
-}
-
-function FormHead() {
-    return (
-        <div>
-            <Link href='/'>
-                <Image
-                    priority
-                    className="h-10 w-auto"
-                    src={aLogo}
-                    alt="Logo"
-                />
-            </Link>
-            <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Portaal voor ontwikkelaars
-            </h2>
         </div>
     )
 }
