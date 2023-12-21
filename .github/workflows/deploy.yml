@@ -2,10 +2,12 @@ name: Deploy
 
 on:
   push:
-    branches: main
+    # Branch on which to automatically run the deploy-action.
+    # ┗━ Options: branch.name ━━ example: "main"
+    branches: disabled
 
 jobs:
-  deploy:
+  setup:
     runs-on: self-hosted
     steps:
       - uses: appleboy/ssh-action@master
@@ -17,11 +19,27 @@ jobs:
           script: |
             mkdir ~/env ~/env/${{github.event.repository.name}}
             cd ~/env/${{github.event.repository.name}}
-
+            
             sudo git clone https://github.com/${{github.repository}} .
+            sudo git clean -f
+            sudo git checkout -f
             sudo git pull
 
             echo '${{ secrets.APP_ENV }}' > .env
             
+            sudo docker-compose pull
+  deploy:
+    needs: setup
+    runs-on: self-hosted
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          key:      ${{ secrets.SSH_KEY }} 
+          host:     ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port:     ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/env/${{github.event.repository.name}}
+
             sudo docker-compose down
-            sudo docker-compose up -d
+            sudo docker-compose up -d --remove-orphans

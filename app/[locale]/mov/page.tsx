@@ -1,6 +1,6 @@
-import Header from '@/components/Header'
-import Stream from '@/components/Stream'
-import Footer from '@/components/Footer'
+import Header from '../../../src/components/Header'
+import Stream from '../../../src/components/Stream'
+import Footer from '../../../src/components/Footer'
 
 export default function Page() {
     return (

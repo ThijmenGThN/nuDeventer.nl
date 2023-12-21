@@ -1,37 +1,31 @@
+
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
-import { NextIntlClientProvider as Localizer } from 'next-intl'
-
-import Session from './Session'
-
-import { locales } from '../../middleware'
-
-import '@/styles/globals.css'
+import { NextIntlClientProvider as Localizer, useMessages } from 'next-intl'
 
 import type { Metadata } from 'next'
 
+import { locales } from '@/helpers/navigation'
+
+import '@/styles/globals.css'
+
 export const metadata: Metadata = {
-    title: 'next-leaflet',
-    description: 'An optimized tech stack for efficiency.'
+    title: 'nuDeventer.nl',
+    description: 'Alles met betrekking tot Deventer op één plek.',
+    manifest: 'manifest.json'
 }
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default async function Layout({ children, params: { locale } }: { children: React.ReactNode, params: { locale: string } }) {
+export default function RootLayout({ children, params: { locale } }: { children: React.ReactNode, params: { locale: string } }) {
 
-    locales.some(cur => cur === locale) ?? notFound()
-
-    let messages
-    try { messages = (await import(`../../src/locales/${locale}.json`)).default }
-    catch (error) { notFound() }
+    if (!locales.includes(locale as any)) notFound()
 
     return (
-        <html lang={locale} className="h-full">
-            <body className={inter.className + ' h-full'}>
-                <Localizer locale={locale} messages={messages}>
-                    <Session>
-                        {children}
-                    </Session>
+        <html lang={locale}>
+            <body className={inter.className}>
+                <Localizer locale={locale} messages={useMessages()}>
+                    {children}
                 </Localizer>
             </body>
         </html>
