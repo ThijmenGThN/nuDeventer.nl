@@ -27,7 +27,7 @@ export default function Component() {
             <div className='mb-[1.125rem]'>
                 <div className='-z-10 relative bg-primary aspect-video overflow-hidden rounded-lg'>
                     <MediaPlayer className='w-full h-full'
-                        src="youtube/wsZZlSJTLGQ"
+                        src="/McRlEo1Y4Pg"
                         ref={player}
                         playsinline
                         autoplay
